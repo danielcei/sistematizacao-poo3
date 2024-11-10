@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Pets para Adoção</title>
+</head>
+<body>
+    <h1>Lista de Pets para Adoção</h1>
+    <a href="/pets/novo">Adicionar Novo Pet</a>
+    <ul>
+        <li th:each="pet : ${pets}">
+            <p th:text="'Nome: ' + ${pet.nome}"></p>
+            <p th:text="'Tipo: ' + ${pet.tipo}"></p>
+            <p th:text="'Idade: ' + ${pet.idade}"></p>
+            <p th:text="'Raça: ' + ${pet.raca}"></p>
+            <p th:text="'Status de Adoção: ' + ${pet.statusAdocao}"></p>
+            <a th:href="@{'/pets/editar/' + ${pet.id}}">Editar</a> |
+            <a th:href="@{'/pets/excluir/' + ${pet.id}}" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulário de Pet</title>
+</head>
+<body>
+    <h1 th:text="${pet.id != null ? 'Editar Pet' : 'Adicionar Novo Pet'}"></h1>
+    <form th:action="@{/pets}" th:object="${pet}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <label>Nome: </label>
+        <input type="text" th:field="*{nome}" placeholder="Nome" required />
+        <label>Tipo: </label>
+        <input type="text" th:field="*{tipo}" placeholder="Tipo" required />
+        <label>Idade: </label>
+        <input type="number" th:field="*{idade}" placeholder="Idade" required />
+        <label>Raça: </label>
+        <input type="text" th:field="*{raca}" placeholder="Raça" required />
+        <label>Status de Adoção: </label>
+        <input type="text" th:field="*{statusAdocao}" placeholder="Status de Adoção" />
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="/pets">Voltar para a Lista</a>
+</body>
+</html>
